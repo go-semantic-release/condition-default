@@ -13,11 +13,17 @@ func ReadGitHead() string {
 	return strings.TrimSpace(strings.TrimPrefix(string(data), "ref: refs/heads/"))
 }
 
+var CIVERSION = "dev"
+
 type DefaultCI struct {
 }
 
+func (d *DefaultCI) Version() string {
+	return CIVERSION
+}
+
 func (d *DefaultCI) Name() string {
-	return "none"
+	return "default"
 }
 
 func (d *DefaultCI) RunCondition(map[string]string) error {
