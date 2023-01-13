@@ -1,12 +1,12 @@
 package condition
 
 import (
-	"io/ioutil"
+	"os"
 	"strings"
 )
 
 func ReadGitHead() string {
-	data, err := ioutil.ReadFile(".git/HEAD")
+	data, err := os.ReadFile(".git/HEAD")
 	if err != nil {
 		return ""
 	}
@@ -15,8 +15,7 @@ func ReadGitHead() string {
 
 var CIVERSION = "dev"
 
-type DefaultCI struct {
-}
+type DefaultCI struct{}
 
 func (d *DefaultCI) Version() string {
 	return CIVERSION
